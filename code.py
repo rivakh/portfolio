@@ -9,7 +9,7 @@ import cv2
 
 
 def resize_thumb(img,i):
-    scale_percent = 10 # percent of original size
+    scale_percent = 50 # percent of original size
     width = int(img.shape[1] * scale_percent / 100)
     height = int(img.shape[0] * scale_percent / 100)
     dim = (width, height)
@@ -24,7 +24,8 @@ def resize_thumb(img,i):
 
 def main():
     os.makedirs(sys.argv[2], exist_ok=True)
-    images = sorted(os.listdir(sys.argv[1]), key=lambda x: int(x[5:-4]))
+    print(os.listdir(sys.argv[1])[0][:-3])
+    images = sorted(os.listdir(sys.argv[1]), key=lambda x: x)
     i = 0
     for image in images:
         img = cv2.imread(os.path.join(sys.argv[1], image))
