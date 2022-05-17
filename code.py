@@ -42,21 +42,27 @@ def resize_thumb(img,i):
 
 def main():
     os.makedirs(sys.argv[2], exist_ok=True)
-    print(os.listdir(sys.argv[1])[0][:-3])
-    images = sorted(os.listdir(sys.argv[1]), key=lambda x: x)
+    data = os.listdir(sys.argv[1])[0]
+    for data in os.listdir(sys.argv[1]):
+        print(data[5:-4])
+    # print(os.listdir(sys.argv[1])[0][:-3])
+
+    images = sorted(os.listdir(sys.argv[1]), key=lambda x: int(x[5:-4]))
+    print(images)
+    
     i = 0
     for image in images:
         img = cv2.imread(os.path.join(sys.argv[1], image))
         height, width, channels = img.shape
-        resize_thumb_thesis(img,i+1)
-        i += 1
-        # left_image, right_image = img[:, :width//2, :], img[:, width//2:, :]
-        # print(left_image.shape, right_image.shape , img.shape)
-        
-        # resize_thumb(left_image,i)
+        # resize_thumb_thesis(img,i+1)
         # i += 1
-        # resize_thumb(right_image,i)
-        # i+=1
+        left_image, right_image = img[:, :width//2, :], img[:, width//2:, :]
+        print(left_image.shape, right_image.shape , img.shape)
+        
+        resize_thumb(left_image,i)
+        i += 1
+        resize_thumb(right_image,i)
+        i+=1
     pass
 
 
