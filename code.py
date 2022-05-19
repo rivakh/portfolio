@@ -50,7 +50,7 @@ def main():
     images = sorted(os.listdir(sys.argv[1]), key=lambda x: int(x[5:-4]))
     print(images)
     
-    i = 0
+    i = 1
     for image in images:
         img = cv2.imread(os.path.join(sys.argv[1], image))
         height, width, channels = img.shape
