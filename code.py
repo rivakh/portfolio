@@ -27,7 +27,7 @@ def resize_thumb_thesis(img,i):
     cv2.imwrite(os.path.join(sys.argv[2], f'{i}'+ '.jpg'), maini)
 
 def resize_thumb(img,i):
-    scale_percent = 50 # percent of original size
+    scale_percent = 30 # percent of original size
     width = int(img.shape[1] * scale_percent / 100)
     height = int(img.shape[0] * scale_percent / 100)
     dim = (width, height)
